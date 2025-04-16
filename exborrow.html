@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Details - Library</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; }
+    .top-nav { background: #333; padding: 10px; text-align: left; }
+    .top-nav ul { list-style: none; padding: 0; }
+    .top-nav ul li { display: inline; }
+    .top-nav ul li a { color: white; text-decoration: none; font-size: 18px; }
+    .main-container { padding: 20px; }
+    .book-container { display: flex; flex-wrap: wrap; justify-content: space-around; }
+    .book-box { background: white; border-radius: 8px; padding: 15px; margin: 15px; width: 300px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); text-align: center; }
+    .book-image img { width: 100%; height: auto; border-radius: 5px; }
+    .read-btn, .borrow-btn { padding: 10px 15px; margin: 5px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+    .read-btn { background-color: #007bff; color: white; }
+    .read-btn:hover { background-color: #0056b3; }
+    .borrow-btn { background-color: #28a745; color: white; }
+    .borrow-btn:hover { background-color: #218838; }
+    .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); justify-content: center; align-items: center; text-align: center; }
+    .overlay-content { background: white; width: 80%; height: 80%; position: relative; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5); }
+    .close-btn { position: absolute; top: 5px; right: 10px; font-size: 30px; cursor: pointer; color: red; }
+    .download-btn {
+    position: absolute;
+    bottom: 10px;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+} 
+.return-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 40%; /* Ensures button spans full width */
+    display: block; /* Ensures it appears under each book */
+    text-align: center;
+    position: relative;
+}
+    .return-btn:hover { background-color: #c82333; }
+    .download-btn { right: 20px; background-color: #28a745; }
+    .download-btn:hover { background-color: #218838; }
+    iframe { width: 100%; height: 90%; border-radius: 10px; }
+    .dialog-box {
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      text-align: center;
+      z-index: 1000;
+      display: none;
+    }
+    .dialog-box button { background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+    .dialog-box button:hover { background-color: #0056b3; }
+    .login-signup-btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .login-signup-btn:hover { background-color: #0056b3; }
+  </style>
+</head>
+<body>
+  <header class="top-nav">
+    <nav>
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Back</a></li>
+        
+        <button onclick="logout()">Logout</button>
+
+        <button onclick="goToDetails()">Go to Details</button>
+      </ul>
+    </nav>
+  </header>
+  
+  <section class="main-container">
+    <div class="book-container">
+      <article class="book-box">
+        <div class="book-image"><img src="dip16.png" alt="Digital Image Processing"></div>
+        <h2>dip</h2>
+        <p>Book Id :101</p>
+        <p>Author: Rafael C. Gonzalez</p>
+        <p>Published Year: 2023</p>
+        <button class="read-btn" onclick="openBook('dip.pdf', false)">Read</button>
+        <button class="borrow-btn" onclick="checkLoginAndBorrow('101', 'dip', 'dip.pdf')">Borrow</button>
+        <button class="return-btn" onclick="returnBook('101')">Return</button>
+      </article>
+
+      <!-- second -->
+      <article class="book-box">
+        <div class="book-image"><img src="dip16.png" alt="Digital Image Processing"></div>
+        <h2>ml</h2>
+        <p>Book Id :102</p>
+        <p>Author: Rafael C. Gonzalez</p>
+        <p>Published Year: 2023</p>
+        <button class="read-btn" onclick="openBook('ml.pdf', false)">Read</button>
+        <button class="borrow-btn" onclick="checkLoginAndBorrow('102', 'ml', 'ml.pdf')">Borrow</button>
+        <button class="return-btn" onclick="returnBook('102')">Return</button>
+      </article>
+
+      <!--third-->
+
+      <article class="book-box">
+        <div class="book-image"><img src="dip16.png" alt="Digital Image Processing"></div>
+        <h2>cloud</h2>
+        <p>Book Id :103</p>
+        <p>Author: Rafael C. Gonzalez</p>
+        <p>Published Year: 2023</p>
+        <button class="read-btn" onclick="openBook('cloud.pdf', false)">Read</button>
+        <button class="borrow-btn" onclick="checkLoginAndBorrow('103', 'cloud', 'cloud.pdf')">Borrow</button>
+        <button class="return-btn" onclick="returnBook('103')">Return</button>
+      </article>
+      <!--fourth-->
+
+      <article class="book-box">
+        <div class="book-image"><img src="dip16.png" alt="Digital Image Processing"></div>
+        <h2>iot</h2>
+        <p>Book Id :104</p>
+        <p>Author: Rafael C. Gonzalez</p>
+        <p>Published Year: 2023</p>
+        <button class="read-btn" onclick="openBook('iot.pdf', false)">Read</button>
+        <button class="borrow-btn" onclick="checkLoginAndBorrow('104', 'iot', 'iot.pdf')">Borrow</button>
+        <button class="return-btn" onclick="returnBook('104')">Return</button>
+      </article>
+
+      <!--five-->
+
+      <article class="book-box">
+        <div class="book-image"><img src="dip16.png" alt="Digital Image Processing"></div>
+        <h2>se</h2>
+        <p>Book Id :105</p>
+        <p>Author: Rafael C. Gonzalez</p>
+        <p>Published Year: 2023</p>
+        <button class="read-btn" onclick="openBook('se.pdf', false)">Read</button>
+        <button class="borrow-btn" onclick="checkLoginAndBorrow('105', 'se', 'se.pdf')">Borrow</button>
+        <button class="return-btn" onclick="returnBook('105')">Return</button>
+
+      </article>
+    </div>
+    <!-- Login/Signup Popup -->
+    <div id="login-signup-popup" class="dialog-box" style="display: none;">
+      <p>Please <a href="login22.php" style="color: blue;">login</a> or <a href="signup22.html" style="color: blue;">signup</a> to borrow the book.</p>
+    </div>
+  </section>
+
+  <!-- Overlay for Book Display -->
+  <div id="book-overlay" class="overlay">
+    <div class="overlay-content">
+      <span class="close-btn" onclick="closeBook()">&times;</span>
+      <iframe id="book-frame" src=""></iframe>
+      <button class="download-btn" onclick="downloadBook('dip.pdf')">
+        <i class="fas fa-download"></i> Download
+      </button>
+    </div>
+  </div>
+
+   <!-- Overlay for Book Display -->
+  <div id="book-overlay" class="overlay">
+    <div class="overlay-content">
+      <span class="close-btn" onclick="closeBook()">&times;</span>
+      <iframe id="book-frame" src=""></iframe>
+  
+      <button class="download-btn" onclick="downloadBook('ml.pdf')">
+        <i class="fas fa-download"></i> Download
+      </button>
+    </div>
+  </div>
+
+  <!-- Overlay for Book Display -->
+  <div id="book-overlay" class="overlay">
+    <div class="overlay-content">
+      <span class="close-btn" onclick="closeBook()">&times;</span>
+      <iframe id="book-frame" src=""></iframe>
+      <button class="download-btn" onclick="downloadBook('cloud.pdf')">
+        <i class="fas fa-download"></i> Download
+      </button>
+    </div>
+  </div>
+
+  <!-- Overlay for Book Display -->
+  <div id="book-overlay" class="overlay">
+    <div class="overlay-content">
+      <span class="close-btn" onclick="closeBook()">&times;</span>
+      <iframe id="book-frame" src=""></iframe>
+      <button class="download-btn" onclick="downloadBook('iot.pdf')">
+        <i class="fas fa-download"></i> Download
+      </button>
+    </div>
+  </div>
+
+  <!-- Overlay for Book Display -->
+  <div id="book-overlay" class="overlay">
+    <div class="overlay-content">
+      <span class="close-btn" onclick="closeBook()">&times;</span>
+      <iframe id="book-frame" src=""></iframe>
+      <button class="download-btn" onclick="downloadBook('se.pdf')">
+        <i class="fas fa-download"></i> Download
+      </button>
+    </div>
+  </div>
+
+
+  <!-- Borrow Date Dialog Box -->
+  <div id="borrow-dialog" class="dialog-box">
+    <p>Book borrowed successfully!</p>
+    <p id="borrow-date-text"></p>
+    <button onclick="closeDialog()">OK</button>
+  </div>
+
+  <script>
+
+    // Retrieve username from sessionStorage and display it
+const username = sessionStorage.getItem('username');
+document.getElementById('username').textContent = username;
+
+function goToDetails() {
+    // Pass username to details22.html
+    window.location.href = `details22.html?username=${username}`;
+}
+    let isBorrowed = false;
+
+    function openBook(bookUrl, borrowed) {
+      document.getElementById("book-frame").src = bookUrl + "#toolbar=0";
+      document.getElementById("book-overlay").style.display = "flex";
+      if (!borrowed) {
+        document.querySelector(".return-btn").style.display = "none";
+        document.querySelector(".download-btn").style.display = "none";
+      } else {
+        document.querySelector(".return-btn").style.display = "block";
+        document.querySelector(".download-btn").style.display = "block";
+      }
+    }
+
+    function closeBook() {
+      document.getElementById("book-frame").src = "";
+      document.getElementById("book-overlay").style.display = "none";
+    }
+
+    function checkLoginAndBorrow(bookId, bookName, bookUrl) {
+    var loggedIn = sessionStorage.getItem("loggedIn");
+    if (loggedIn !== "true") {
+        document.getElementById("login-signup-popup").style.display = "block";
+    } else {
+      let username = sessionStorage.getItem("username"); // Get the logged-in username
+      let bookRecords = JSON.parse(localStorage.getItem(username + "_bookRecords")) || []; // Get existing records from localStorage
+        let borrowDate = new Date().toLocaleString();
+// Add the borrowed book
+bookRecords.push({
+    id: bookId,
+    name: bookName,
+    borrowDate: borrowDate,
+    returnDate: "Not Returned"
+});
+
+// Save the updated records back to localStorage
+localStorage.setItem(username + "_bookRecords", JSON.stringify(bookRecords));
+console.log("Book records saved:", bookRecords);
+
+        openBook(bookUrl, true);
+        showBorrowDialog(borrowDate);
+    }
+}
+
+
+
+
+    document.querySelectorAll('.borrow-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const bookId = this.closest('article').querySelector('p').textContent.split(":")[1].trim();
+        const bookName = this.closest('article').querySelector('h2').textContent;
+
+        const borrowDate = new Date().toLocaleString();
+        const returnDate = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000).toLocaleString();
+
+        localStorage.setItem('bookId', bookId);
+        localStorage.setItem('bookName', bookName);
+        localStorage.setItem('borrowDate', borrowDate);
+        localStorage.setItem('returnDate', returnDate);
+      });
+    });
+
+    function showBorrowDialog(borrowDate) {
+  document.getElementById("borrow-date-text").textContent = "Borrow date saved: " + borrowDate;
+  document.getElementById("borrow-dialog").style.display = "block";
+}
+
+function closeDialog() {
+  document.getElementById("borrow-dialog").style.display = "none";
+}
+
+    function downloadBook(bookUrl) {
+      var link = document.createElement("a");
+      link.href = bookUrl;
+      link.download = "dip.pdf";
+      link.click();
+    }
+    function returnBook(bookId) {
+    let username = sessionStorage.getItem("username"); // Get the logged-in username
+    let bookRecords = JSON.parse(localStorage.getItem(username + "_bookRecords")) || []; // Get book records from localStorage
+    
+    // Find the book by its ID
+    let book = bookRecords.find(record => record.id === bookId);
+    
+    if (book) {
+        // Set the return date for the book
+        book.returnDate = new Date().toLocaleString();
+
+        // Save the updated book records back to localStorage
+        localStorage.setItem(username + "_bookRecords", JSON.stringify(bookRecords));
+
+        // Show the updated return date in the dialog
+        alert(`Book returned successfully! Return Date: ${book.returnDate}`);
+    } else {
+        alert("Not Yet Borrowed.");
+    }
+}
+function logout() {
+    const username = sessionStorage.getItem('username');  
+    if (username) {
+        const checkOutTime = new Date().toLocaleString(); 
+        localStorage.setItem(`${username}_checkOut`, checkOutTime);
+        sessionStorage.removeItem('username'); // Clear session after logging out
+        window.location.href = "home.html"; // Redirect to home page
+    } else {
+        console.log("No user logged in.");
+    }
+}
+
+
+
+
+  </script>
+</body>
+</html>

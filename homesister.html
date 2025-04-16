@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sisters' Literary Legacy</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+
+        /* Back Icon */
+        .back-icon {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #2c3e50;
+        }
+
+        .back-icon:hover {
+            color: #1a252f;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 20px;
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555;
+            max-width: 800px;
+            margin: 10px auto;
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .legacy-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Card Styling */
+        .legacy-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .legacy-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 14px rgba(44, 62, 80, 0.2);
+        }
+
+        /* Image Styling */
+        .legacy-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Title Styling */
+        .legacy-card h3 {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #34495e;
+        }
+
+        /* Button */
+        .read-more {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .read-more:hover {
+            background-color: #1a252f;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back Button -->
+    <button class="back-icon" onclick="window.location.href='index.html'">&#8592; Back</button>
+
+    <h2>Sisters’ Literary Legacy</h2>
+    <p>Discover the remarkable books written by the sisters, their creative journeys, and the impact of their work.</p>
+
+    <div class="legacy-container">
+        <!-- Sister 1 -->
+        <div class="legacy-card">
+            <img src="php/uploads/g2.jpeg" alt="Sister 1">
+            <h3>Emily Smith</h3>
+            <p>Emily's journey into literature was inspired by nature and personal experiences. Her books explore deep human emotions.</p>
+            <button class="read-more" onclick="location.href='emily_books.html'">Explore Books</button>
+        </div>
+
+        <!-- Sister 2 -->
+        <div class="legacy-card">
+            <img src="php/uploads/g1.jpeg" alt="Sister 2">
+            <h3>Sarah Smith</h3>
+            <p>Sarah's works blend historical events with storytelling, creating a unique literary style that captivates readers.</p>
+            <button class="read-more" onclick="location.href='sarah_books.html'">Explore Books</button>
+        </div>
+
+        <!-- Sister 3 -->
+        <div class="legacy-card">
+            <img src="php/uploads/g3.jpeg" alt="Sister 3">
+            <h3>Anne Smith</h3>
+            <p>Anne's writing is known for its poetic beauty and rich character development, leaving a lasting impact on literature.</p>
+            <button class="read-more" onclick="location.href='anne_books.html'">Explore Books</button>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Archive Gallery</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 50vh;
+            background: url('Images/background.jpeg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .nav {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .intro-container {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            padding: 40px 20px;
+            background: #fff;
+        }
+
+        .intro-box {
+            width: 30%;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro-box h2, .intro-box h3 {
+            font-size: 22px;
+            color: #222;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .intro-box p {
+            font-size: 16px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        .gallery-filters {
+    text-align: center;
+    padding: 20px;
+    background-color: bisque;
+    border-radius: 10px;
+}
+
+.gallery-filters button {
+    background: linear-gradient(45deg, #ff7e5f, #feb47b); /* Gradient effect */
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    margin: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 30px; /* Rounded buttons */
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+.gallery-filters button:hover {
+    background: linear-gradient(45deg, #ff6b6b, #ffa07a);
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-filters button:active {
+    transform: translateY(0); /* Reset when clicked */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+        .gallery-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        
+            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusts to screen size */
+    gap: 15px;
+    justify-content: center;
+    padding: 20px;
+        }
+       
+
+
+        .gallery-item {
+    width: 250px;
+    height: 180px; /* Ensuring uniform height */
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures all images fit neatly without distortion */
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.1); /* Slight zoom effect */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+        .intro-box h2, .intro-box h3 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px; /* Space for the underline */
+}
+
+.intro-box h2::after, .intro-box h3::after {
+    content: "";
+    display: block;
+    width: 50%; /* Initial underline size */
+    height: 2px;
+    background: black;
+    margin: auto;
+    transition: width 0.3s ease-in-out; /* Smooth expansion */
+}
+
+.intro-box h2:hover::after, .intro-box h3:hover::after {
+    width: 100%; /* Expands on hover */
+}
+
+/* Add hover effect for the boxes */
+.intro-box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.intro-box:hover {
+    transform: translateY(-5px); /* Slight lift effect */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Adds shadow */
+}
+  /* Feedback Section Styles */
+  .feedback-section {
+        background: #f9f9f9;
+        padding: 60px 40px;
+        text-align: center;
+        margin-top: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 1500px;
+        margin: auto;
+        
+    }
+
+    .feedback-section h2 {
+        font-size: 2rem;
+        color: #4a90e2;
+    }
+
+    .feedback-section p {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    /* Feedback Form */
+    .feedback-form form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .form-group {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        color: #333;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-group input, .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+        border-color: #4a90e2;
+        outline: none;
+    }
+
+    .submit-btn {
+        padding: 10px 20px;
+        background: #4a90e2;
+        color: white;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .submit-btn:hover {
+        background: #357ABD;
+    }
+
+    /* Thank-You Message */
+    #thankYouMessage {
+        display: none;
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #e8f4ff;
+        border: 1px solid #4a90e2;
+        border-radius: 5px;
+    }
+
+    #thankYouMessage h3 {
+        color: #4a90e2;
+        margin-bottom: 10px;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="nav">
+            <a href="index.html"><i class="fas fa-arrow-left"></i> Home</a>
+            <span>|</span>
+            <a href="#">Gallery</a>
+        </div>
+    </div>
+
+    <div class="intro-container">
+        <div class="intro-box">
+            <h2>Captured Moments Through Time</h2>
+            <p>Explore our rich collection of photographs from different eras. Each image tells a unique story.</p>
+        </div>
+        <div class="intro-box">
+            <h3>Preserving History</h3>
+            <p>Our digital archive ensures that invaluable memories are preserved for future generations.</p>
+        </div>
+        <div class="intro-box">
+            <h3>Discover More</h3>
+            <p>From vintage photographs to modern captures, our collection is constantly expanding.</p>
+        </div>
+    </div>
+
+    <div class="gallery-filters">
+        <button onclick="filterGallery('all')">All</button>
+        <button onclick="filterGallery('1990-2000')">1990-2000</button>
+        <button onclick="filterGallery('2000-2010')">2000-2010</button>
+        <button onclick="filterGallery('2010-2020')">2010-2020</button>
+        <button onclick="filterGallery('special')">2020-2025</button>
+    </div>
+
+    <div class="gallery-grid">
+       
+    <div class="gallery-item" data-category="1990-2000">
+            <a href="php/gallery.php"><img src="php/uploads/b2.jpeg" alt="1990s Event"></a>
+        </div>
+        <div class="gallery-item" data-category="1990-2000">
+            <a href="php/gallery.php"><img src="php/uploads/b2.jpeg" alt="1990s Gathering"></a>
+        </div>
+        <div class="gallery-item" data-category="1990-2000">
+            <a href="php/gallery.php"><img src="php/uploads/b3.jpg" alt="1990s Festival"></a>
+        </div>
+        <div class="gallery-item" data-category="1990-2000">
+            <a href="php/gallery.php"><img src="php/uploads/b5.jpg" alt="1990s Heritage"></a>
+        </div>
+        <div class="gallery-item" data-category="1990-2000">
+            <a href="php/gallery.php"><img src="php/uploads/background1.jpeg" alt="1990s Parade"></a>
+        </div>
+
+        <!-- 2000-2010 Category -->
+        <div class="gallery-item" data-category="2000-2010">
+            <a href="php/gallery.php"><img src="php/uploads/book3.jpg" alt="2000s Expo"></a>
+        </div>
+        <div class="gallery-item" data-category="2000-2010">
+            <a href="php/gallery.php"><img src="php/uploads/book3.jpg" alt="2000s Celebration"></a>
+        </div>
+        <div class="gallery-item" data-category="2000-2010">
+            <a href="php/gallery.php"><img src="php/uploads/b5.jpg" alt="2000s Fest"></a>
+        </div>
+        <div class="gallery-item" data-category="2000-2010">
+            <a href="php/gallery.php"><img src="php/uploads/book4.jpg" alt="2000s Show"></a>
+        </div>
+        <div class="gallery-item" data-category="2000-2010">
+            <a href="php/gallery.php"><img src="php/uploads/background1.jpeg" alt="2000s Event"></a>
+        </div>
+</div>
+    <section class="feedback-section">
+        <h2>💬 Share Your Thoughts</h2>
+        <p>We'd love to hear what you think about this image! Please leave your feedback below.</p>
+        
+        <!-- Feedback Form -->
+        <div class="feedback-form">
+            <form id="commentForm">
+                <div class="form-group">
+                    <label for="username"><i class="fas fa-user"></i> Your Name:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your name..." required>
+                </div>
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Email (Optional):</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email...">
+                </div>
+                <div class="form-group">
+                    <label for="comment"><i class="fas fa-comments"></i> Your Feedback:</label>
+                    <textarea id="comment" name="comment" placeholder="What did you find interesting? Share your thoughts!" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Feedback</button>
+            </form>
+        </div>
+    
+        <!-- Thank-You Message -->
+        <div id="thankYouMessage" class="hidden">
+            <h3>Thank you for your feedback!</h3>
+            <p>Your thoughts help us improve and preserve these moments better.</p>
+        </div>
+    </section>
+    <script>
+        function filterGallery(category) {
+            let items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                item.style.display = (category === 'all' || item.getAttribute('data-category') === category) ? "block" : "none";
+            });
+        }
+         // JavaScript to handle form submission
+    const form = document.getElementById("commentForm");
+    const thankYouMessage = document.getElementById("thankYouMessage");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+        form.style.display = "none"; // Hide the form
+        thankYouMessage.style.display = "block"; // Show thank-you message
+    });
+    
+       
+    </script>
+</body>
+</html>

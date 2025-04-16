@@ -1,0 +1,86 @@
+/* Parallax Section */
+  .parallax-container {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    background: url('background3.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+ 
+  .content-box {
+    margin-bottom: 40px;
+  }
+  
+  .content-box h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .content-box p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  button {
+    background: #6c63ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background: #5548c8;
+  }
+  
+  /* Parallax Background Scroll Effect */
+  .parallax-container {
+    background-attachment: fixed; /* Enables parallax effect */
+  }
+  /* Wrapper for Horizontal Layout */
+.content-wrapper {
+    display: flex; /* Arrange boxes horizontally */
+    justify-content: space-around; /* Space evenly between boxes */
+    align-items: flex-start; /* Align content at the top */
+    gap: 20px; /* Optional: Add space between boxes */
+    padding: 50px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  /* Individual Boxes */
+  .content-box {
+    flex: 1; /* Equal width for all boxes */
+    max-width: 30%; /* Restrict the width of each box */
+    background: white; /* Optional: Add a background for better readability */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for effect */
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .content-box:hover {
+    transform: translateY(-10px); /* Hover effect */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  @media (max-width: 768px) {
+    .content-wrapper {
+      flex-direction: column; /* Stack boxes vertically */
+      align-items: center; /* Center-align the boxes */
+    }
+  
+    .content-box {
+      max-width: 90%; /* Expand the box width on smaller screens */
+    }
+  }
+  
+  
+  

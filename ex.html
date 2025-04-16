@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Timeline with Animations</title>
+  <link rel="stylesheet" href="excss.css">
+</head>
+<body>
+  <div class="timeline-container">
+    <h1>Historical Timeline</h1>
+    <div class="timeline">
+      <div class="timeline-item hidden" onclick="toggleDetails(this)">
+        <div class="timeline-date">1900</div>
+        <div class="timeline-content">
+          <h3>Event Title 1</h3>
+          <p class="details">This is a brief description of the event in 1900.</p>
+        </div>
+      </div>
+      <div class="timeline-item hidden" onclick="toggleDetails(this)">
+        <div class="timeline-date">1945</div>
+        <div class="timeline-content">
+          <h3>Event Title 2</h3>
+          <p class="details">Details about a significant event in 1945.</p>
+        </div>
+      </div>
+      <div class="timeline-item hidden" onclick="toggleDetails(this)">
+        <div class="timeline-date">2000</div>
+        <div class="timeline-content">
+          <h3>Event Title 3</h3>
+          <p class="details">A key milestone or event in the year 2000.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="order.js"></script>
+</body>
+</html>

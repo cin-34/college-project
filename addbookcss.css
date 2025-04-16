@@ -1,0 +1,150 @@
+/* Reset Default Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f1f1f1, #e2e2e2);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Make sure the body takes full height */
+}
+
+main {
+    padding: 30px 15px;
+    flex-grow: 1; /* Allow the main content to take available space */
+}
+
+h1, h2 {
+    font-family: 'Georgia', serif;
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+/* Navigation Bar Styling */
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content:flex-end;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    padding: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 24px; /* Adjust the size of the icon */
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.home-icon {
+    font-size: 32px;  /* Larger size for the home icon */
+    margin-right: 10px; /* Space between icon and text */
+    color: #333;
+}
+
+/* Hover Effect for the Icon */
+nav a:hover .home-icon {
+    color: #007bff;  /* Change color on hover */
+}
+
+/* Header Section */
+.header {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.header p {
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+
+/* Form Container */
+.form-container {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    text-align: center;
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Form Fields */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-top: 5px;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input[type="file"] {
+    background-color: #f9f9f9;
+}
+
+.submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.1em;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Footer Section */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    width: 100%;
+}

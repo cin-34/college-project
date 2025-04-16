@@ -1,0 +1,46 @@
+/* Unified single-box styling for the search container */
+.search-container {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    width: fit-content;
+    margin-left: 90px;
+}
+
+.search-container select,
+.search-container input,
+.search-container button {
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+}
+
+.search-container select {
+    border-right: 1px solid #ccc;
+    border-radius: 8px 0 0 8px;
+}
+
+.search-container input {
+    flex: 1;
+    padding-left: 10px;
+}
+
+.search-container button {
+    background: #145DA0;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-container button:hover {
+    background: #0D3B66;
+}

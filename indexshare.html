@@ -1,0 +1,117 @@
+<?php include '../db.php'; ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Contributions</title>
+    <style>
+        /* Page Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* Back Button */
+        .back-icon {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 22px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+        .back-icon:hover {
+            color: gray;
+        }
+
+        /* Form Container */
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        /* Form Styling */
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back Icon -->
+    <a href="index.html" class="back-icon">← Back</a>
+
+    <!-- Form Container -->
+    <div class="container">
+        <h2>Submit Your Contribution</h2>
+        <form action="php/submit_contribution.php" method="POST" enctype="multipart/form-data">
+            <label for="name">Your Name:</label>
+            <input type="text" name="name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" name="email" required>
+
+            <label for="type">Contribution Type:</label>
+            <select name="type">
+                <option value="book">Book (PDF)</option>
+                <option value="document">Document (DOCX, TXT)</option>
+                <option value="image">Image (JPG, PNG)</option>
+            </select>
+
+            <label for="details">Contribution Details:</label>
+            <textarea name="details" required></textarea>
+
+            <label for="file">Upload File:</label>
+            <input type="file" name="file" accept=".pdf,.docx,.txt,.jpg,.png" required>
+
+            <button type="submit">Submit Contribution</button>
+        </form>
+    </div>
+
+</body>
+</html>

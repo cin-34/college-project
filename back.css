@@ -1,0 +1,111 @@
+/* Reset Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+  }
+  
+  /* Parallax Section */
+  .parallax-section {
+    height: 100vh;
+    background: url('background.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  }
+  
+  /* Fade-in effect for the header */
+  .parallax-section h1 {
+    font-size: 3rem;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  /* Keyframe Animation for Fade-In Effect */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Content Section */
+  .content-section {
+    padding: 50px 20px;
+    background-color: #f4f4f9;
+    text-align: center;
+  }
+  
+  /* Flexbox Layout for Content */
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* Individual Box Styles */
+  .box {
+    position: relative;
+    width: 300px;
+    height: 350px; /* Adjust the height to suit the content */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background: url('background.jpeg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+  
+  /* Hover Effect for Boxes */
+  .box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Heading and Paragraph Styling */
+  .box h2 {
+    color: #fff;
+    font-size: 1.6rem;
+  }
+  
+  .box p {
+    color: #fff;
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+  
+  /* Button Styling */
+  button {
+    background: #6c63ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* Hover Effect for Button */
+  button:hover {
+    background: #5548c8;
+  }
+  

@@ -1,0 +1,85 @@
+.res{
+  font-family: Arial, sans-serif;
+  background: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  
+}
+.resources {
+  padding: 50px;
+  background: rgba(255, 255, 255, 0.8);
+}
+.title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+.resource-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.resource-box {
+  width: 280px;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.top-section, .bottom-section {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+.top-section {
+  background:#8b5e3c; /* Light Tan */
+}
+.bottom-section {
+  background: #D2B48C; /* Darker Tan */
+}
+.icon {
+  font-size: 50px;
+  color: #8b5e3c;
+  transition: opacity 0.3s ease-in-out;
+}
+.resource-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+}
+
+/* Hover Effect: Entire Box Takes Top Color & Title Moves to Center */
+.resource-box:hover {
+  background: #D2B48C; /* Change entire box to top-section color */
+}
+.resource-box:hover .top-section,
+.resource-box:hover .bottom-section {
+  background: transparent; /* Removes individual section colors */
+}
+.resource-box:hover .icon {
+  opacity: 0; /* Hide icon */
+}
+.resource-box:hover .resource-title {
+  top: 45%; /* Moves the title higher */
+  background:  #D2B48C; /* Keep the title background same as hover color */
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}

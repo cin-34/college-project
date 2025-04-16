@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Journal Archives</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e3e3e3;
+            color: #333;
+        }
+
+        .header {
+            background: #333;
+            color: #ffd700;
+            text-align: center;
+            padding: 30px 10px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .header p {
+            margin: 10px 0 0;
+            font-size: 1.2rem;
+            color: #e0e0e0;
+        }
+
+        .featured-journals {
+            padding: 20px;
+            background: #ffd700;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .featured-journals h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .journal-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .journal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .journal-card h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .journal-card p {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+
+        .journal-card a {
+            text-decoration: none;
+            color: white;
+            background: #333;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .journal-card a:hover {
+            background: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #ffd700;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Digital Journal Archives</h1>
+        <p>Explore, Search, and Access Journals from Our Collection</p>
+    </div>
+
+    <!-- Featured Journals Section -->
+    <div class="featured-journals">
+        <h2>Featured Journals</h2>
+        <p>Check out our highlighted journals of the month.</p>
+    </div>
+
+    <!-- Journal Archive Grid -->
+    <div class="archive-grid" id="journalGrid">
+        <div class="journal-card">
+            <h3>Scientific Journal 2022</h3>
+            <p>Category: Science</p>
+            <p>Published: Jan 2022</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="journal-card">
+            <h3>Tech Innovations 2021</h3>
+            <p>Category: Technology</p>
+            <p>Published: Dec 2021</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="journal-card">
+            <h3>World History 2020</h3>
+            <p>Category: History</p>
+            <p>Published: May 2020</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="journal-card">
+            <h3>Artistic Insights 2023</h3>
+            <p>Category: Arts</p>
+            <p>Published: Apr 2023</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="journal-card">
+            <h3>Artistic Insights 2023</h3>
+            <p>Category: Arts</p>
+            <p>Published: Apr 2023</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="journal-card">
+            <h3>Artistic Insights 2023</h3>
+            <p>Category: Arts</p>
+            <p>Published: Apr 2023</p>
+            <a href="#">Read More</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Digital Journal Archives. All Rights Reserved.
+    </footer>
+</body>
+</html>

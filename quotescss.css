@@ -1,0 +1,84 @@
+   
+        .quo {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+            margin: 0;
+            
+        }
+        .container5 {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            justify-content: flex-start; /* Ensure no blank space on the left */
+            position: relative;
+        }
+        .image1{
+            width: 50%; /* Increase width of the image */
+            display: flex;
+            justify-content: center;
+            margin-right: 20px;
+        }
+        .image1 img {
+            width: 100%; /* Image takes up the full width of its container */
+            height: auto;
+            max-width: 600px; /* Control max size of the image */
+            border-radius: 10px;
+        }
+        .text {
+            width: 45%; /* Adjust text width */
+            font-family: 'Georgia', serif; 
+            color: #333;
+            text-align: center; /* Center-align the text */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Vertically center the text */
+        }
+        .text h2 {
+            text-decoration: underline;
+            margin-bottom: 20px;
+            font-size: 32px; /* Larger font size for the title */
+        }
+        .profile1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the profile picture and text */
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .profile1 img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        .profile1 p {
+            font-size: 18px; /* Larger font size for the name */
+            margin-bottom: 10px;
+        }
+        .profile1 .quote {
+            font-size: 20px; /* Larger font size for the quote */
+            font-style: italic;
+            color: #555;
+        }
+        .left-arro, .right-arro{
+            cursor: pointer;
+            background: black;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .left-arro {
+            left: 740px;
+        }
+        .right-arro {
+            right: 170px;
+        }

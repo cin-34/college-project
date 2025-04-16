@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Contributions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        input, textarea, select {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .discussion {
+            margin-top: 20px;
+        }
+        .post {
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .reply {
+            margin-left: 20px;
+            background: #f9f9f9;
+            padding: 10px;
+            border-left: 3px solid #ddd;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Contribute to Our Digital Archive</h2>
+        <form id="contributeForm">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="contributionType">Contribution Type:</label>
+            <select id="contributionType">
+                <option value="book">Book</option>
+                <option value="document">Historical Document</option>
+                <option value="image">Image</option>
+            </select>
+
+            <label for="details">Contribution Details:</label>
+            <textarea id="details" rows="4" required></textarea>
+
+            <button type="button" onclick="submitContribution()">Submit Contribution</button>
+        </form>
+    </div>
+
+    <div class="container discussion">
+        <h2>Community Discussion</h2>
+        <textarea id="discussionInput" rows="3" placeholder="Start a discussion..."></textarea>
+        <button onclick="addDiscussion()">Post</button>
+        <div id="discussionPosts"></div>
+    </div>
+
+    <script>
+        function submitContribution() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let type = document.getElementById("contributionType").value;
+            let details = document.getElementById("details").value;
+
+            if (name && email && details) {
+                alert("Thank you, " + name + "! Your " + type + " contribution has been submitted.");
+                document.getElementById("contributeForm").reset();
+            } else {
+                alert("Please fill in all fields before submitting.");
+            }
+        }
+
+        function addDiscussion() {
+            let input = document.getElementById("discussionInput").value;
+            if (input.trim() === "") {
+                alert("Please enter a discussion post.");
+                return;
+            }
+
+            let postDiv = document.createElement("div");
+            postDiv.classList.add("post");
+            postDiv.innerHTML = `<p><strong>User:</strong> ${input}</p>
+                                <button onclick="replyToPost(this)">Reply</button>
+                                <div class="replies"></div>`;
+
+            document.getElementById("discussionPosts").prepend(postDiv);
+            document.getElementById("discussionInput").value = "";
+        }
+
+        function replyToPost(button) {
+            let replyText = prompt("Enter your reply:");
+            if (replyText) {
+                let replyDiv = document.createElement("div");
+                replyDiv.classList.add("reply");
+                replyDiv.innerHTML = `<p><strong>Reply:</strong> ${replyText}</p>`;
+                button.nextElementSibling.appendChild(replyDiv);
+            }
+        }
+    </script>
+
+</body>
+</html>

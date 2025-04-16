@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founder Quotes</title>
+    <style>
+       
+       
+        .container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            justify-content: flex-start; /* Ensure no blank space on the left */
+        }
+        .image {
+            width: 50%; /* Increase width of the image */
+            display: flex;
+            justify-content: center;
+            margin-right: 20px;
+        }
+        .image img {
+            width: 100%; /* Image takes up the full width of its container */
+            height: auto;
+            max-width: 600px; /* Control max size of the image */
+            border-radius: 10px;
+        }
+        .text {
+            width: 45%; /* Adjust text width */
+            font-family: 'Georgia', serif; 
+            color: #333;
+            text-align: center; /* Center-align the text */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Vertically center the text */
+        }
+        .text h2 {
+            text-decoration: underline;
+            margin-bottom: 20px;
+            font-size: 32px; /* Larger font size for the title */
+        }
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the profile picture and text */
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .profile img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        .profile p {
+            font-size: 18px; /* Larger font size for the name */
+            margin-bottom: 10px;
+        }
+        .profile .quote {
+            font-size: 20px; /* Larger font size for the quote */
+            font-style: italic;
+            color: #555;
+        }
+        .left-arrow, .right-arrow {
+            cursor: pointer;
+            background: black;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .left-arrow {
+            left: 830px;
+        }
+        .right-arrow {
+            right: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image">
+            <span class="left-arrow" onclick="prevSlide()">&#9665;</span>
+            <img src="b1.jpg" alt="Founder Image">
+        </div>
+        <div class="text" id="slider">
+            <h2>Founder's Quotes</h2>
+            <div class="profile">
+                <img id="profileImage" src="back.png" alt="Profile Image">
+                <p id="founderName">Founder Name 1</p>
+                <p class="quote" id="founderQuote">An Indigenous Catholic Clerical Religious Congregation of Pontifical right in the Syro-Malabar Church, founded in 1933 at Kottayam, Kerala by the respected fathers Very</p>
+            </div>
+            <span class="right-arrow" onclick="nextSlide()">&#9655;</span>
+        </div>
+    </div>
+    
+    <script>
+        let profiles = [
+            { img: "../Images/background.jpeg", name: "Founder Name 1", quote: "An Indigenous Catholic Clerical Religious Congregation of Pontifical right in the Syro-Malabar Church, founded in 1933 at Kottayam, Kerala by the respected fathers Very" },
+            { img: "b4.jpg", name: "Founder Name 2", quote: "Another inspiring quote by the founder..." },
+            { img: "b1.jpg", name: "Founder Name 3", quote: "Yet another quote to highlight the vision of the founder..." },
+            { img: "b3.jpeg", name: "Founder Name 4", quote: "Continuing with more wisdom from the founder..." },
+            { img: "b6.jpeg", name: "Founder Name 5", quote: "A guiding principle by the respected founder..." },
+            { img: "b6.jpeg", name: "Founder Name 6", quote: "An insightful message by the founder..." },
+            { img: "b5.jpeg", name: "Founder Name 7", quote: "Final thought from the founder..." }
+        ];
+        let index = 0;
+        function nextSlide() {
+            index = (index + 1) % profiles.length;
+            updateSlide();
+        }
+        function prevSlide() {
+            index = (index - 1 + profiles.length) % profiles.length;
+            updateSlide();
+        }
+        function updateSlide() {
+            document.getElementById("profileImage").src = profiles[index].img;
+            document.getElementById("founderName").innerText = profiles[index].name;
+            document.getElementById("founderQuote").innerText = profiles[index].quote;
+        }
+        setInterval(nextSlide, 3000);
+    </script>
+</body>
+</html>

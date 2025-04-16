@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Registration Form</title>
+  <link rel="stylesheet" href="css/regcss.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Back Button */
+    .back-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #007bff;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.3s ease;
+      box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.3);
+    }
+
+    .back-button i {
+      font-size: 18px;
+    }
+
+    .back-button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Back Button -->
+  <a href="index.html" class="back-button">
+    <i class="fas fa-arrow-left"></i> Back to Home
+  </a>
+
+  <div class="container">
+    <!-- Title section -->
+    <div class="title">Registration</div>
+    <div class="content">
+      <!-- Registration form -->
+      <form action="php/register.php" method="post" autocomplete="off">
+        <div class="user-details">
+          <!-- Input for Full Name -->
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" name="name" placeholder="Enter your name" required>
+          </div>
+          
+          <!-- Input for Email -->
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="email" name="email" placeholder="Enter your email" required>
+          </div>
+
+          <!-- Input for Phone Number -->
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="tel" name="phone" placeholder="Enter your number" required>
+          </div>
+
+          <!-- Input for Username -->
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" name="username" placeholder="Enter your username" required>
+          </div>
+
+          <!-- Input for Password (Hidden Input Type) -->
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" name="password" placeholder="Enter your password" required>
+          </div>
+
+          <!-- Input for Confirm Password -->
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="password" name="confirm_password" placeholder="Confirm your password" required>
+          </div>
+
+          <!-- Input for Address -->
+          <div class="input-box">
+            <span class="details">Address</span>
+            <input type="text" name="Address" placeholder="Enter your address" required>
+          </div>
+        </div>
+
+        <div class="gender-details">
+          <!-- Radio buttons for gender selection -->
+          <input type="radio" name="gender" id="dot-1">
+          <input type="radio" name="gender" id="dot-2">
+          <input type="radio" name="gender" id="dot-3">
+          <span class="gender-title">Gender</span>
+          <div class="category">
+            <!-- Label for Male -->
+            <label for="dot-1">
+              <span class="dot one"></span>
+              <span class="gender">Male</span>
+            </label>
+            <!-- Label for Female -->
+            <label for="dot-2">
+              <span class="dot two"></span>
+              <span class="gender">Female</span>
+            </label>
+            <!-- Label for Prefer not to say -->
+            <label for="dot-3">
+              <span class="dot three"></span>
+              <span class="gender">Prefer not to say</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Submit button -->
+        <div class="button">
+          <input type="submit" name="register" value="Register">
+        </div>
+        <p>Already have an account? <a href="login.html">Login</a></p>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

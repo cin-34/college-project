@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Archives</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/journalcss.css">
+    <link rel="stylesheet" href="css/searchcss.css">
+    <link rel="stylesheet" href="css/quotescss.css">
+   <link rel="stylesheet" href="boxhover/excard.css">
+    <link rel="stylesheet" href="boxhover/back1.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        
+   
+    
+    </head> 
+    
+    <body>
+        <!-- Header -->
+        <header>
+          <div class="logo">
+            <i class="fas fa-archive"></i>
+            <h2>Digital Archives</h2>
+          </div>
+          <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li>
+                  <a href="#" id="categories">Categories</a>
+                  <ul class="dropdown">
+                    <li>
+                      <a href="#">Fiction</a>
+                      <ul class="sub-dropdown">
+                        <li><a href="index1.html">Fantasy</a></li>
+                        <li><a href="index1.html">Mystery</a></li>
+                        <li><a href="#">Sci-Fi</a></li>
+                        <li><a href="#">Adventure</a></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="#">Non-Fiction</a>
+                      <ul class="sub-dropdown">
+                        <li><a href="#">Biography</a></li>
+                        <li><a href="#">Self-Help</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Science</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <!--<li><a href="#">Patrons</a></li>-->
+                <li><a href="#">Books</a></li>
+                <li>
+                    <a href="#" id="journal">Journal</a>
+                    <ul class="dropdown" id="journal-dropdown">
+                        <li><a href="#">SJL</a></li>
+                        <li><a href="#">Personal Diary</a></li>
+                        <li><a href="#">Personal Letters</a></li>
+                    </ul>
+                </li>
+                <li><a href="php/gallery.php">Gallery</a></li>
+                <a href="login.html">
+                    <i class="material-icons">login</i> <!-- Material Design Icon for login -->
+                </a>
+                <a href="index1.html">
+                    <i class="material-icons">person_add</i> <!-- Material Design Icon for register -->
+                </a>
+                
+              </ul>
+              
+          </nav>
+        </header>
+      
+        <!-- Hero Section -->
+        <section class="hero">
+          <div class="content">
+            <h1>Welcome to Digital Archives</h1>
+            <p>Your gateway to preserved knowledge and memories. Explore a treasure trove of letters, diaries, magazines, and more.</p>
+            
+            <form action="php/search_result.php" method="GET">
+                <div class="search-container">
+                    <select name="category" id="category" onchange="updateSearchOptions()">
+                        <option value="books" selected>Books</option>
+                        <option value="events">Gallery</option>
+                        <option value="year_ranges">Year</option>
+
+                    </select>
+            
+                    <select name="search_type" id="search_type" onchange="updatePlaceholder()">
+                        <option value="book_title">Search by Book Title</option>
+                        
+                        <option value="author">Search by Author Name</option>
+                    </select>
+            
+                    <input type="text" name="query" id="query" placeholder="Search">
+                    <button type="submit">🔍</button>
+                </div>
+            </form>
+            
+        
+            
+          </div>
+        </section>
+      
+        
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="stylesheet" type="text/css" href="libs/bootswatch-5.3/dist/materia/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="libs/fontawesome-free-6.5.2/css/all.min.css"/>
+    <link rel="stylesheet" type="text/css" href="libs/owl-carousel-2.3.4/dist/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/stylec43f.css?v=2024-03-27"/>
+    <script type="text/javascript" charset="utf8" src="libs/jquery/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="libs/bootstrap-typeahead-0.0.5/bootstrap-typeahead.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="libs/owl-carousel-2.3.4/dist/owl.carousel.min.js"></script>
+    <script type="text/javascript">
+                var s=false;
+                $(window).focus(function() {
+                    var name = "accio=";
+                    var ca = document.cookie.split(";");
+                    for (var i = 0; i < ca.length; i++) {
+                        var c = ca[i].trim();
+                        if (c.indexOf(name) == 0){
+                            if(!window.s){
+                                location.reload();
+                                return;
+                            }
+                            break;
+                        }
+                    }
+                    if(ca.length == i && window.s){
+                        location.reload();
+                    }
+                });
+            </script>
+    <script type="text/javascript">
+        function search() {
+            window.location.href = "/_search?key=" + $("#search-key").val().trim().replace('&', 'and');
+            return;
+            var lang = $(".key-lang.active").attr("data-lcode");
+            if (lang == 'en') {
+                window.location.href = "/search?key=" + $("#search-key").val().trim();
+            } else {
+                window.location.href = "/search?key=" + $("#search-key").val().trim() + "&lang=" + lang;
+            }
+        }
+
+        function open_modal() {
+            $("#modal_feedback").modal("show");
+        }
+        $(document).ready(function() {
+                    if($("#modal_msg").length){
+                    } else {
+                        $("#modal_domain-selector").modal("show");
+                    }
+                    $("#search-key").on("focus", function() {
+                        $("#modal_domain-selector").modal("show");
+                    });
+                });     $(document).ready(function() {
+            $("#featured-contents .owl-carousel").owlCarousel({
+                loop: true,
+                margin: 0,
+                autoplay: true,
+                autoplayTimeout: 2500,
+                autoplayHoverPause: true,
+                responsiveClass: true,
+                nav: true,
+                navText: ["<i class=\"fa-solid fa-xl fa-chevron-left\"></i>", "<i class=\"fa-solid fa-xl fa-chevron-right\"></i>"],
+                dots: false,
+                responsive: {
+                    0: {
+                        items: 2
+                    },
+                    600: {
+                        items: 3
+                    },
+                    800: {
+                        items: 4
+                    },
+                    1000: {
+                        items: 6
+                    }
+                }
+            });
+            $('#domain-selector-section .owl-carousel').owlCarousel({
+                loop: true,
+                margin: 0,
+                autoplay: true,
+                autoplayTimeout: 2500,
+                autoplayHoverPause: true,
+                responsiveClass: true,
+                nav: true,
+                navText: ["<i class=\"fa-solid fa-xl fa-chevron-left\"></i>", "<i class=\"fa-solid fa-xl fa-chevron-right\"></i>"],
+                dots: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 6
+                    }
+                }
+            })
+
+            $(".govt-projects .owl-carousel").owlCarousel({
+                loop: true,
+                margin: 5,
+                autoplay: true,
+                autoplayTimeout: 2500,
+                autoplayHoverPause: true,
+                responsiveClass: true,
+                navigation: false,
+                dots: false,
+                responsive: {
+                    0: {
+                        items: 2
+                    },
+                    600: {
+                        items: 3
+                    },
+                    800: {
+                        items: 4
+                    },
+                    1000: {
+                        items: 5
+                    }
+                }
+            });
+        });
+    </script>
+    <style type="text/css">
+        .owl-carousel .owl-nav button.owl-prev,
+        .owl-carousel .owl-nav button.owl-next {
+            z-index: 1;
+            width: 40px;
+            height: 40px;
+            background-color: #ccc;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translatey(-50%);
+        }
+
+        .owl-carousel .owl-nav button.owl-prev {
+            left: -10px;
+        }
+
+        .owl-carousel .owl-nav button.owl-next {
+            right: -10px;
+        }
+
+        .owl-carousel .owl-nav button:hover {
+            background-color: #aaa;
+        }
+
+        /****** */
+        @keyframes blinker {
+            50% {
+                /* opacity: 0; */
+                background-color: #60b85a;
+            }
+        }
+
+        main {
+            background: #f0efef;
+            overflow-y: unset;
+            height: 100% !important;
+        }
+
+        main.container-fluid {
+            margin-top: -10px;
+            
+        }
+
+        /* section-search */
+        .section-search {
+            background-image: url(assets/img/landing-top-banner.jpg), url(assets/img/landing-top-banner-bg-x.jpg);
+            background-position: top center, top center;
+            background-repeat: no-repeat, repeat-x;
+            background-size: cover;
+            position: relative;
+            width: 100%;
+            display: block;
+            padding-bottom: 3vw;
+        }
+
+        .section-search>.container-fluid>.row {
+            padding-top: 25px;
+        }
+
+        .section-search input,
+        .section-search input:focus {
+            background: #fff;
+        }
+
+        @media screen and (min-width: 1600px) {
+            .fix-header {
+                position: fixed;
+                top: 0;
+                width: 1600px;
+                z-index: 500;
+            }
+
+            .fix-header header {
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 1599px) {
+            .fix-header {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 500;
+            }
+
+            .fix-header header {
+                width: 100%;
+            }
+        }
+
+        .footer-bg-image {
+            background-image: url(assets/img/footerimage2.jpg);
+            background-position: center right;
+            background-repeat: no-repeat;
+        }
+
+        .mb-n5 {
+            margin-bottom: -70px;
+        }
+
+        .pt-n5 {
+            padding-top: 70px;
+        }
+
+        .card:hover .image-box img {
+            opacity: 0.4;
+        }
+
+        .container_foto {
+
+            .card-body h5 a,
+            .card-body h5 a:hover {
+                text-transform: uppercase;
+                color: #fff !important;
+                letter-spacing: normal;
+                font-weight: bold;
+            }
+
+            .image-box {
+                position: relative;
+                -webkit-border-top-left-radius: 6px;
+                -webkit-border-top-right-radius: 6px;
+                -moz-border-radius-topleft: 6px;
+                -moz-border-radius-topright: 6px;
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+            }
+
+            .card-body article {
+                position: absolute;
+                width: 100%;
+                top: -39%;
+                margin-left: -15px;
+            }
+
+            .image-box img {
+                -webkit-transition: all 1s ease;
+                -moz-transition: all 15s ease;
+                -o-transition: all 1s ease;
+                -ms-transition: all 1s ease;
+                transition: all 1s ease;
+            }
+
+            .card-body .icon-sec {
+                padding: 0px;
+                border: 8px solid rgba(255, 255, 255, 0.16);
+                overflow: hidden;
+                width: 90px;
+                height: 90px;
+                position: absolute;
+                left: 50%;
+                margin-left: -40px;
+                top: -45px;
+                -webkit-box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.1);
+                -moz-box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.1);
+                box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .card-se {
+                background: #2C467A;
+            }
+
+            .card-he {
+                background: #7a9b7a;
+            }
+
+            .card-re {
+                background: #9a5759;
+            }
+
+            .card-cd {
+                background: #588a98;
+            }
+
+            .card-ch {
+                background: #9c9b59;
+            }
+
+            .card-nw {
+                background: #505354;
+            }
+
+            .card-pt {
+                background: #086364;
+            }
+
+            .card-lw {
+                background: #663534;
+            }
+        }
+
+        .card-body ul li a:hover,
+        #domain-section .col a:hover {
+            color: var(--bs-gray-600) !important;
+        }
+
+        #domain-section .card {
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        #featured-contents .owl-carousel .card-body {
+            padding: 10px;
+        }
+
+        @media screen and (max-width: 575px) {
+            .section-search {
+                background-image: none;
+            }
+
+            .section-search img {
+                margin-top: -50px;
+            }
+
+            #domain-selector-section .owl-item {
+                display: block !important;
+            }
+
+            #ndl-search-heading {
+                text-align: center;
+            }
+
+            #ndl-search-heading img {
+                margin: -2.5rem auto 0px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header -->
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@700&amp;display=swap" rel="stylesheet"><div class="fix-header">
+            
+        </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#user-login").submit(function() {
+            $("#login_pass").val(CryptoJS.MD5($("#login_pass").val()));
+        });
+    });
+</script>
+
+    <!-- main -->
+    <main class="container-fluid">
+        
+
+        <section class="bg-white m-0 p-3" id="domain-selector-section">
+                    <div class="owl-carousel"><div class="item p-1">
+                        <div class="card h-100 container_foto overflow-hidden">
+                            <div class="image-box card-se">
+                                <img src="assets/img/domains/se-back.jpg" class="card-img-top" alt="School Education" height="100%" width="100%" />
+                            </div>
+                            <div class="card-body position-relative">
+                                <article class="text-center">
+                                    <h5><a class="link-success" href="ndl_se.html">Documents and Books</a></h5>
+                                </article>
+                                <a class="link-success" href="ndl_se.html"><div class="icon-sec rounded-circle"><img src="assets/img/domains/se-icon.svg" alt="School Education" height="100%" width="100%" /></div></a>
+                                <ul class="ps-0 pt-5 m-0 list-unstyled">            <li class="p-1"> <a href="documentsbooks.html" class="link-primary"> <i class="fa-xs fa-solid fa-caret-right"></i> Subjects </a> </li>          <li class="p-1"> <a href="documentsbooks.html" class="link-primary"> <i class="fa-xs fa-solid fa-caret-right"></i> Documents</a> </li>            <li class="p-1"> <a href="documentsbooks.html" class="link-primary"> <i class="fa-xs fa-solid fa-caret-right"></i>Books </a> </li>            <li class="p-1"> <a href="documentsbooks.html" class="link-primary"></a>  </a> </li>           </ul>
+                            </div>
+                            <div class="card-footer small text-muted text-center">
+                                <a class="link-success" href="documentsbooks.html"><i class="fa-solid fa-layer-group"></i> Explore More Contents</a>
+                            </div>
+                        </div>
+                    </div><div class="item p-1">
+                        <div class="card h-100 container_foto overflow-hidden">
+                            <div class="image-box card-he">
+                                <img src="assets/img/domains/he-back.jpg" class="card-img-top" alt="Higher Education" height="100%" width="100%" />
+                            </div>
+                            <div class="card-body position-relative">
+                                <article class="text-center">
+                                    <h5><a class="link-success" href="ndl_he.html">Gallery</a></h5>
+                                </article>
+                                <a class="link-success" href="ndl_he.html"><div class="icon-sec rounded-circle"><img src="assets/img/domains/he-icon.svg" alt="Higher Education" height="100%" width="100%" /></div></a>
+                                <ul class="ps-0 pt-5 m-0 list-unstyled">            <li class="p-1"> <a href="galleryhome.html" class="link-primary"> <i class="fa-xs fa-solid fa-caret-right"></i>Gallery </a> </li>           <li class="p-1"> <a href="galleryhome.html" class="link-primary"> <i class="fa-xs fa-solid fa-caret-right"></i> Year Range</a> </li>            <li class="p-1"> <a href="galleryhome.html" class="link-primary"> <i class="fa-xs fa-solid fa-caret-right"></i> Events </a> </li>           <li class="p-1"> <a href="galleryhome.html" class="link-primary"> <i class="fa-xs fa-solid fa-caret-right"></i> Event Photos </a> </li>            </ul>
+                            </div>
+                            <div class="card-footer small text-muted text-center">
+                                <a class="link-success" href="galleryhome.html"><i class="fa-solid fa-layer-group"></i> Explore More Contents</a>
+                            </div>
+                        </div>
+                    </div><div class="item p-1">
+                        <div class="card h-100 container_foto overflow-hidden">
+                            <div class="image-box card-re">
+                                <img src="assets/img/domains/re-back.jpg" class="card-img-top" alt="Research" height="100%" width="100%" />
+                            </div>
+                            <div class="card-body position-relative">
+                                <article class="text-center">
+                                    <h5><a class="link-success" href="ndl_re.html">Journal</a></h5>
+                                </article>
+                                <a class="link-success" href="ndl_re.html"><div class="icon-sec rounded-circle"><img src="assets/img/domains/re-icon.svg" alt="Research" height="100%" width="100%" /></div></a>
+                                <ul class="ps-0 pt-5 m-0 list-unstyled">            <li class="p-1"> <a href="journalhome.html" class="link-primary"> <i class="fa-xs fa-solid fa-caret-right"></i> Subjects </a> </li>          <li class="p-1"> <a href="journalhome.html" class="link-primary"> <i class="fa-xs fa-solid fa-caret-right"></i> Content Providers </a> </li>           <li class="p-1"> <a href="journalhome.html" class="link-primary"> <i class="fa-xs fa-solid fa-caret-right"></i> Resource Types </a> </li>            <li class="p-1"> <a href="journalhome.html" class="link-primary"> <i class="fa-xs fa-solid fa-caret-right"></i> Journals </a> </li>           </ul>
+                            </div>
+                            <div class="card-footer small text-muted text-center">
+                                <a class="link-success" href="journalhome.html"><i class="fa-solid fa-layer-group"></i> Explore More Contents</a>
+                            </div>
+                        </div>
+                    </div><div class="item p-1">
+                        <div class="card h-100 container_foto overflow-hidden">
+                            <div class="image-box card-cd">
+                                <img src="assets/img/domains/cd-back.jpg" class="card-img-top" alt="Career Development" height="100%" width="100%" />
+                            </div>
+                            <div class="card-body position-relative">
+                                <article class="text-center">
+                                    <h5><a class="link-success" href="ndl_cd.html">Engage & Share</a></h5>
+                                </article>
+                                <a class="link-success" href="ndl_cd.html"><div class="icon-sec rounded-circle"><img src="assets/img/domains/cd-icon.svg" alt="Career Development" height="100%" width="100%" /></div></a>
+                                <ul class="ps-0 pt-5 m-0 list-unstyled">            <li class="p-1"> <a href="indexshare.html" class="link-primary"> <i class="fa-xs fa-solid fa-caret-right"></i> Contributions </a> </li>            <li class="p-1"> <a href="indexshare.html" class="link-primary"> <i class="fa-xs fa-solid fa-caret-right"></i> Resource Types </a> </li>            </ul>
+                            </div>
+                            <div class="card-footer small text-muted text-center">
+                                <a class="link-success" href="indexshare.html"><i class="fa-solid fa-layer-group"></i> Explore More Contents</a>
+                            </div>
+                        </div>
+                    </div><div class="item p-1">
+                        <div class="card h-100 container_foto overflow-hidden">
+                            <div class="image-box card-ch">
+                                <img src="assets/img/domains/ch-back.jpg" class="card-img-top" alt="Cultural Archives" height="100%" width="100%" />
+                            </div>
+                            <div class="card-body position-relative">
+                                <article class="text-center">
+                                    <h5><a class="link-success" href="ndl_ch.html">Archive Guids</a></h5>
+                                </article>
+                                <a class="link-success" href="ndl_ch.html"><div class="icon-sec rounded-circle"><img src="assets/img/domains/ch-icon.svg" alt="Cultural Archives" height="100%" width="100%" /></div></a>
+                                <ul class="ps-0 pt-5 m-0 list-unstyled">            <li class="p-1"> <a href="homedetails.html" class="link-primary"> <i class="fa-xs fa-solid fa-caret-right"></i> Content Providers </a> </li>           <li class="p-1"> <a href="homedetails.html" class="link-primary"> <i class="fa-xs fa-solid fa-caret-right"></i> Resource Types </a> </li>            </ul>
+                            </div>
+                            <div class="card-footer small text-muted text-center">
+                                <a class="link-success" href="homedetails.html"><i class="fa-solid fa-layer-group"></i> Explore More Contents</a>
+                            </div>
+                        </div>
+                    </div><div class="item p-1">
+                        <div class="card h-100 container_foto overflow-hidden">
+                            <div class="image-box card-nw">
+                                <img src="assets/img/domains/nw-back.jpg" class="card-img-top" alt="Newspaper Archives" height="100%" width="100%" />
+                            </div>
+                            <div class="card-body position-relative">
+                                <article class="text-center">
+                                    <h5><a class="link-success" href="ndl_nw.html">Sisters' Legacy</a></h5>
+                                </article>
+                                <a class="link-success" href="ndl_nw.html"><div class="icon-sec rounded-circle"><img src="assets/img/domains/nw-icon.svg" alt="Newspaper Archives" height="100%" width="100%" /></div></a>
+                                <ul class="ps-0 pt-5 m-0 list-unstyled">            <li class="p-1"> <a href="homesister.html" class="link-primary"> <i class="fa-xs fa-solid fa-caret-right"></i> Content Providers </a> </li>           <li class="p-1"> <a href="homesister.html" class="link-primary"> <i class="fa-xs fa-solid fa-caret-right"></i> Newspapers </a> </li>           </ul>
+                            </div>
+                            <div class="card-footer small text-muted text-center">
+                                <a class="link-success" href="homesister.html"><i class="fa-solid fa-layer-group"></i> Explore More Contents</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+            
+    </main>
+    </body>
+    
+    
+        
+    
+
+    <!-- footer -->
+    <script type="text/javascript">
+                $(document).ready(function() {
+                    if($("#modal_login").length && location.protocol == "http:" && location.pathname.indexOf("_document/index.html")!=3){
+                        window.location.replace("https://" + location.hostname + location.pathname + location.search);
+                    }
+                });
+            </script>
+            <div class="container">
+                <div class="left">
+                    <h2 class="heading">Welcome to Digital Archive</h2>
+                    <p class="description">A Digital Archive is a repository that stores and preserves digital content, such as documents, images, audio, video, and other media, for long-term access and use. It allows organizations, institutions, and individuals to manage and safeguard valuable information, making it accessible for research, reference, and preservation purposes. Digital archives serve as an essential tool for storing historical, cultural, and scholarly materials, offering a secure and efficient way to store vast amounts of data that might otherwise be lost due to physical degradation.</p>
+                  <a href="explore.html">
+                    <button class="explore-btn">Explore</button>
+                  </a>
+                </div>
+                <div class="right">
+                    <img src="Images/book4.jpg" alt="Archive Image" class="image">
+                </div>
+            </div>
+            
+            
+            <h1>Most Popular Books</h1>
+           
+         <div class="hori-box">
+            <div class="box-animate">
+                <div class="box-container">
+                    <div class="card1">
+                        <div class="imgBox">
+                            <img src="Images/book1.jpg">
+                        </div>
+                        <div class="content1">
+                            <div class="details">
+                                <h2>"A big shot is a little shot who keeps on shooting, so keep trying."</h2>
+                                <p class="author">Author Name: Abdul Kalam</p>
+                                <p class="title">Title: Wings of Fire</p>
+                                <div class="data">
+                                    <h2></h2>
+                                   
+                                </div>
+                                <div class="Btns">
+                                <a href="php/book_list.php">
+                                    <button>Expore</button>
+                                </a>
+                                    <button>View profile</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-animate">
+                <div class="box-container">
+                    <div class="card1">
+                        <div class="imgBox">
+                            <img src="Images/book5.jpg">
+                        </div>
+                        <div class="content1">
+                            <div class="details">
+                                <h2>"The harder the struggle, the sweeter the victory."</h2>
+                                <p class="author">Author Name:Ashok kumawat</p>
+                                <p class="title">Title:The Story of struggle</p>
+                                <div class="data">
+                                    <h2></h2>
+                                </div>
+                                <div class="Btns">
+                                <a href="php/book_list.php">
+                                    <button>Explore</button>
+                                </a>
+                                    <button>View profile</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-container">
+                <div class="card1">
+                    <div class="imgBox">
+                        <img src="Images/book2.jpg">
+                    </div>
+                    <div class="content1">
+                        <div class="details">
+                            <h2>“Bliss, Eternal Harmony, and Indescribable Beauty.”</h2>
+                            <p class="author">Author Name:Joseph Murphy</p>
+                            <p class="title">Title:Beleive in yourself</p>
+                            <div class="data">
+                                <h2></h2>
+                            </div>
+                            <div class="Btns">
+                            <a href="php/book_list.php">
+                                <button>Explore</button>
+                            </a>
+                                <button>View profile</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main Parallax Section -->
+  <div class="back-im">
+  <div class="parallax-container">
+    <div class="content-wrapper">
+      <div class="content-box">
+        <h2>Our Vision</h2>
+        <p>
+            To create a well-structured digital repository that ensures the preservation and accessibility of valuable books, documents, and multimedia resources. 
+      </div>
+      <div class="content-box">
+        <h2>Digital Archive Profile</h2>
+        <p>
+            The **Digital Archive System** is designed to store and manage a vast collection of historical records, books, photographs, and other digital assets. 
+        <button>Read More</button>
+      </div>
+      <div class="content-box">
+        <h2>Our Mission</h2>
+        <p>
+            To digitize, preserve, and provide easy access to important historical and literary resources. We aim to bridge the gap between the past and the present by leveraging technology to safeguard documents, books.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="gal1">
+    <h1>Gallery</h1>
+<div class="back12">
+<div class="wrapper12">
+    <div class="containergal">
+        <!-- Box 1 -->
+        <div class="archive-box" id="box1">
+            <img src="Images/c1.jpg" alt="Archive Image 1">
+            <p class="year">1990-1992</p>
+            <a href="php/gallery.php" class="view-all">View all pictures →</a>
+        </div>
+
+        <!-- Box 2 -->
+        <div class="archive-box" id="box2">
+            <img src="Images/c2.jpg" alt="Archive Image 2">
+            <p class="year">1995-1997</p>
+            <a href="php/gallery.php" class="view-all">View all pictures →</a>
+        </div>
+
+        <!-- Box 3 -->
+        <div class="archive-box" id="box3">
+            <img src="Images/c3.jpg" alt="Archive Image 3">
+            <p class="year">2000-2002</p>
+            <a href="php/gallery.php" class="view-all">View all pictures →</a>
+        </div>
+
+        <!-- Box 4 -->
+        <div class="archive-box" id="box4">
+            <img src="Images/c4.jpg" alt="Archive Image 4">
+            <p class="year">2005-2007</p>
+            <a href="php/gallery.php" class="view-all">View all pictures →</a>
+        </div>
+
+        <!-- Box 5 -->
+        <div class="archive-box" id="box5">
+            <img src="Images/c5.jpg" alt="Archive Image 5">
+            <p class="year">2010-2012</p>
+            <a href="php/gallery.php" class="view-all">View all pictures →</a>
+        </div>
+
+        <!-- Box 6 -->
+        <div class="archive-box" id="box6">
+            <img src="Images/c3.jpg" alt="Archive Image 6">
+            <p class="year">2015-2017</p>
+            <a href="php/gallery.php" class="view-all">View all pictures →</a>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div class="quo">
+    <div class="container5">
+        <div class="image1">
+            <span class="left-arro" onclick="prevSlide()">&#9665;</span>
+            <img src="Images/background.jpeg" alt="Founder Image">
+        </div>
+        <div class="text" id="slider">
+            <h2>Founder's Quotes</h2>
+            <div class="profile1">
+                <img id="profileImage1" src="Images/c2.jpg" alt="Profile Image">
+                <p id="founderName">Founder Name 1</p>
+                <p class="quote" id="founderQuote">An Indigenous Catholic Clerical Religious Congregation of Pontifical right in the Syro-Malabar Church, founded in 1933 at Kottayam, Kerala by the respected fathers Very</p>
+            </div>
+            <span class="right-arro" onclick="nextSlide()">&#9655;</span>
+        </div>
+    </div>
+    
+</div>
+
+<div class="res">
+    <section class="resources">
+        <h2 class="title">Resources</h2>
+        <div class="resource-container">
+            <div class="resource-box">
+                <div class="top-section">
+                    <span class="icon">📖</span>
+                </div>
+                <div class="bottom-section">
+                    <p class="resource-title">SJL</p>
+                </div>
+            </div>
+            <div class="resource-box">
+                <div class="top-section">
+                    <span class="icon">🔍</span>
+                </div>
+                <div class="bottom-section">
+                    <p class="resource-title">Personal Diary</p>
+                </div>
+            </div>
+            <div class="resource-box">
+                <div class="top-section">
+                    <span class="icon">📚</span>
+                </div>
+                <div class="bottom-section">
+                    <p class="resource-title">Personal Letters</p>
+                </div>
+            </div>
+            <div class="resource-box">
+                <div class="top-section">
+                    <span class="icon">🎭</span>
+                </div>
+                <div class="bottom-section">
+                    <p class="resource-title">Current Exhibitions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    <div class="contact1">
+    <div class="wave"></div>
+
+    <footer class="footer">
+        <div class="footer-column">
+            <div class="logo">
+                <i class="fas fa-book" style="font-size: 30px;"></i>
+                <h3>Digital Archive</h3>
+            </div>
+            <p>A Digital Archive is a structured collection of digital materials, such as documents, images, audio, and video files, that are preserved, organized, and made accessible for future use.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-skype"></i></a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">St. Joseph</a></li>
+                <li><a href="#">St.Joseph of lyon</a></li>
+                <li><a href="#">St.joseph school</a></li>
+                <li><a href="#">assumptions</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Resources</h3>
+            <ul>
+                <li><a href="explore.html">About</a></li>
+                <li><a href="book_list.php">Books</a></li>
+                <li><a href="gallery.php">Gallery</a></li>
+                <li><a href="#">Journal</a></li>
+                <li><a href="indexshare.html">Your Contribution</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Location Map</h3>
+            <p>Find us at our location.</p>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345086194!2d144.96305761531523!3d-37.81362797975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5772d50c0e2a10!2sFederation%20Square!5e0!3m2!1sen!2sin!4v1624594672600!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </footer>
+
+    <div class="copyright">
+        <p>Copyright &copy; 2025 Digital Archives. All Rights Reserved.</p>
+    </div>
+</div>
+
+
+
+
+  
+<script src="js/quotesjs.js"></script>
+<script src="js/script.js"></script>
+<script src="js/galleryjs.js"></script>
+<script src="js/journal.js"></script>
+<script src="js/searchjs.js"></script>
+            
+            
+        
+    
+            
+            
+            
+
+            <script src="js/script2.js"></script>
+         
+            <script src="js/script1.js"></script>
+            
+    </body>
+ </html>

@@ -1,0 +1,101 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Form Styling */
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 500px;
+    margin: auto;
+}
+
+label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* File Input Styling */
+input[type="file"] {
+    padding: 5px;
+}
+
+/* Buttons */
+button {
+    background: #007BFF;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Photo Section */
+
+.photo button {
+    background: red;
+    border: none;
+    padding: 5px;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.photo button:hover {
+    background: darkred;
+}
+
+/* Back Link */
+.back-link {
+    font-size: 20px;
+    text-decoration: none;
+    color: #007BFF;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    form {
+        width: 90%;
+    }
+
+    .photo img {
+        width: 150px;
+    }
+}
+        .photo { display: inline-block; margin: 10px; text-align: center; }
+        .photo img { width: 200px; height: auto; cursor: pointer; }
+        .photo input[type="file"] { display: block; margin-top: 5px; }
+        .back-link { font-size: 20px; text-decoration: none; color: #007BFF; }
+        .back-link:hover { text-decoration: underline; }
